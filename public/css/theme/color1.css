@@ -1,0 +1,190 @@
+/*THEME COLOR RED*/
+
+/*Color 1*/
+
+.banner-links ul li.active a, .banner-links ul li a:hover {
+  background: #EB5A41;
+}
+
+.content-grid-head h4 a {
+  color: #EB5A41;
+}
+
+.content-grid-info h3 a:hover, .content-sec-info h3 a:hover {
+  color: #EB5A41;
+}
+
+a.bttn {
+  background: #EB5A41;
+}
+
+a.bttn:hover {
+  color: #EB5A41;
+}
+
+.search {
+  background: #EB5A41;
+}
+
+.search input[type="text"] {
+  background: #F4725C;
+}
+
+.archives li.active a, .categories li.active a, .categories li a:hover, .archives li a:hover {
+  color: #EB5A41;
+}
+
+.contact form input[type="text"]:hover, .contact-right textarea:hover {
+  border: 1px solid #EB5A41;
+}
+
+.address h3 {
+  color: #EB5A41;
+}
+
+.address-info p a {
+  color: #EB5A41;
+}
+
+.term h4 {
+  color: #EB5A41;
+}
+
+.content-form form input[type="submit"] {
+  background: #EB5A41;
+  border: 1px solid #EB5A41;
+}
+
+.content-form form input[type="submit"]:hover {
+  color: #EB5A41;
+  border: 1px solid #EB5A41;
+}
+
+.comment-info h4 {
+  ;
+  color: #EB5A41;
+}
+
+.comment-info h5 {
+  color: #EB5A41;
+}
+
+.comment-info a:hover {
+  background: #EB5A41;
+  border: 1px solid #EB5A41;
+}
+
+
+/*Color 2*/
+
+.categories li a, .archives li a {
+  color: #A5877D;
+}
+
+.address-info p {
+  color: #A5877D;
+}
+
+.terms-sec-head p {
+  color: #A5877D;
+}
+
+p.agree {
+  color: #A5877D;
+  ;
+}
+
+/*Color 3*/
+
+.content-grid-info h3 a, .content-sec-info h3 a {
+  color: #87655B;
+}
+
+.categories h3, .archives h3 {
+  color: #87655B;
+}
+
+.contact-head h3, .terms h3 {
+  color: #87655B;
+}
+
+.contact form input[type="text"], .contact-right textarea {
+  border: 1px solid #87655B;
+  color: #87655B;
+}
+
+.contact form input[type="submit"] {
+  color: #87655B;
+  border: 1px solid #87655B;
+}
+
+.contact form input[type="submit"]:hover {
+  background: #87655B;
+  border: 1px solid #87655B;
+}
+
+.address-info h4 {
+  color: #87655B;
+}
+
+.address-info h5 a {
+  color: #87655B;
+}
+
+.term p {
+  color: #87655B;
+}
+
+.term li {
+  color: #87655B;
+}
+
+.terms input[type="button"] {
+  color: #87655B;
+  border: 1px solid #87655B;
+  background: #EFEAD8;
+}
+
+.terms input[type="button"]:hover {
+  background: #87655B;
+  border: 1px solid #87655B;
+}
+
+.content-grid-single h3 {
+  color: #87655B;
+}
+
+.content-form h3, .comments h3 {
+  color: #87655B;
+}
+
+.comments img {
+  border: 1px solid #87655B;
+}
+
+.comment-info a {
+  color: #87655B;
+  border: 1px solid #87655B;
+}
+
+/*color 4*/
+
+.banner-links ul{
+  background:#FFC600;
+}
+
+.content-sec-info h4 a:hover{
+color:#FFC600;
+}
+
+.fotter-info h3,.fotter-list h3,.fotter-media h3{
+color:#FFC600;
+}
+
+.fotter-list ul li a:hover{
+color:#FFC600;
+}
+
+.copywrite p a{
+color:#FFC600
+}

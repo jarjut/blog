@@ -7,14 +7,19 @@
     "require": {
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
+        "intervention/image": "^2.4",
+        "jeroennoten/laravel-adminlte": "^1.22",
         "laravel/framework": "5.5.*",
+        "laravel/scout": "^3.0",
         "laravel/tinker": "~1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
+        "krlove/eloquent-model-generator": "^1.2",
         "mockery/mockery": "~1.0",
-        "phpunit/phpunit": "~6.0"
+        "phpunit/phpunit": "~6.0",
+        "xethron/migrations-generator": "^2.0"
     },
     "autoload": {
         "classmap": [
