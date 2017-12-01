@@ -16,9 +16,11 @@ Route::get('/post/{post}', 'BlogController@showPost')->name('viewpost');
 Route::post('comment', 'BlogController@addComment')->name('addComment');
 Route::post('search', 'BlogController@search')->name('search');
 Route::get('category/{id}' ,'BlogController@showCategoryPosts')->name('categoryposts');
+Route::get('announcement', 'BlogController@showAnnouncementPage')->name('blogannouncement');
 
-
-
+/*
+* Admin Routes
+*/
 Route::prefix('admin')->group(function () {
   Route::get('/', function(){
     return redirect()->route('dashboard');
@@ -56,6 +58,8 @@ Route::prefix('admin')->group(function () {
   });
 });
 
-Route::prefix('get')->group(function(){
-  Route::get('posts', 'PostController@getPosts');
-});
+
+
+// Route::prefix('get')->group(function(){
+//   Route::get('posts', 'PostController@getPosts');
+// });

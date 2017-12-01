@@ -80,6 +80,7 @@
   <script type="text/javascript">
   $(function () {
     CKEDITOR.replace('content')
-  })
+  });
+  $('form').preventDoubleSubmission();
   </script>
 @endsection

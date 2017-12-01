@@ -39,4 +39,9 @@ class Category extends Model
     {
         return $this->belongsToMany('App\Post', 'kategoripost', 'category_id', 'post_id')->with(['user', 'comments', 'categories'])->latest();
     }
+
+    public function paginatePosts($paginate)
+    {
+        return $this->belongsToMany('App\Post', 'kategoripost', 'category_id', 'post_id')->with(['user', 'comments', 'categories'])->latest()->paginate($paginate);
+    }
 }

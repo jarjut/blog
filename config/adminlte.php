@@ -149,7 +149,7 @@ return [
         [
             'text' => 'Comments',
             'url'  => 'admin/comments',
-            'icon' => 'comment',
+            'icon' => 'comments',
         ],
         // [
         //     'text' => 'Appearance',

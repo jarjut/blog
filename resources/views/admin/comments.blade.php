@@ -29,7 +29,7 @@
         <tbody>
           @foreach ($comments as $comment)
             <tr class="clickable-row" commentId="{{$comment->comment_id}}">
-              <td>{{$comment->author_name}}</td>
+              <td>{{isset($comment->user_id) ? $comment->user->username : $comment->author_name}}</td>
               <td>@if (isset($comment->comment))
               <p>In reply to <a href="{{route('viewpost',['post'=>$comment->post->post_id])}}#c{{$comment->comment->comment_id}}">{{$comment->comment->author_name}}</a></p>
               @endif
@@ -47,7 +47,7 @@
                 </div>
               </td>
               <td><a href="{{route('viewpost',['post'=>$comment->post->post_id])}}">{{$comment->post->title}}</a></td>
-              <td>{{$comment->created_at}}</td>
+              <td>{{$comment->created_at->diffForHumans()}}</td>
             </tr>
           @endforeach
         </tbody>
@@ -131,7 +131,7 @@
   <script>
     $(function () {
       $('#postsTable').DataTable({
-        "order": [[3, 'desc']],
+        "ordering": false,
         "columns": [
           { "width": "10%"},
           { "width": "60%"},
@@ -145,6 +145,7 @@
       var id = $(this).attr('commentId');
       window.location = "comments/edit/"+id;
     });
+    $('form').preventDoubleSubmission();
 
   </script>
 @endsection

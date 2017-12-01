@@ -1,217 +1,217 @@
-/*THEME COLOR GREEN*/
+/*THEME COLOR YELLOW*/
 
 #toTop {
-	background: url(../../images/to-top1.png) no-repeat 5px 10px #2e7d32;
+	background: url(../../images/to-top1.png) no-repeat 5px 10px #cdcc36;
 }
 /*=======================Content Color=======================*/
 .content-sec-info h4{
-  color:#5bee7b;
+  color:#d2d142;
 }
 
 /*==========================Navbar==========================*/
 .pages ul li.active a,.pages ul li a:hover{
-  color:#06e82a;
+  color:#e8d806;
 }
 
 
 .content-grid-head h3{
-  color:#0ce91b;
+  color:#c7cb0b;
 }
 
 .top-menu ul li a:hover,.top-menu ul li.active a{
-  color:#06e831;
+  color:#e4e806;
 }
 
 .top-menu ul li a{
-	color: #2a542a;
+	color: #767834;
 }
 
-/*==========================Color 1==========================*/
+/*========================Color 1 Dark========================*/
 
 .banner-links ul li.active a, .banner-links ul li a:hover {
-  background: #2e7d32;
+  background: #ddbc0d;
 }
 
 .content-grid-head h4 a {
-  color: #2e7d32;
+  color: #ddbc0d;
 }
 
 .content-grid-info h3 a:hover, .content-sec-info h3 a:hover {
-  color: #2e7d32;
+  color: #ddbc0d;
 }
 
 a.bttn {
-  background: #2e7d32;
+  background: #ddbc0d;
 }
 
 a.bttn:hover {
-  color: #2e7d32;
-	background:#52ff00;
+  color: #ddbc0d;
+	background:#f9f244;
 }
 
 .search {
-  background: #2e7d32;
+  background: #ddbc0d;
 }
 
 .search input[type="text"] {
-  background: #54d268;
+  background: #ddf046;
 }
 
 .archives li.active a, .categories li.active a, .categories li a:hover, .archives li a:hover {
-  color: #2e7d32;
+  color: #ddbc0d;
 }
 
 .contact form input[type="text"]:hover, .contact-right textarea:hover {
-  border: 1px solid #2e7d32;
+  border: 1px solid #ddbc0d;
 }
 
 .address h3 {
-  color: #2e7d32;
+  color: #ddbc0d;
 }
 
 .address-info p a {
-  color: #2e7d32;
+  color: #ddbc0d;
 }
 
 .term h4 {
-  color: #2e7d32;
+  color: #ddbc0d;
 }
 
 .content-form form input[type="submit"] {
-  background: #2e7d32;
-  border: 1px solid #2e7d32;
+  background: #ddbc0d;
+  border: 1px solid #ddbc0d;
 }
 
 .content-form form input[type="submit"]:hover {
-  color: #2e7d32;
-  border: 1px solid #2e7d32;
+  color: #ddbc0d;
+  border: 1px solid #ddbc0d;
 }
 
 .comment-info h4 {
   ;
-  color: #2e7d32;
+  color: #ddbc0d;
 }
 
 .comment-info h5 {
-  color: #2e7d32;
+  color: #ddbc0d;
 }
 
 /*.comment-info a:hover {
-  background: #2e7d32;
-  border: 1px solid #2e7d32;
+  background: #ddbc0d;
+  border: 1px solid #ddbc0d;
 }*/
 
 
 /*==========================Color 2==========================*/
 
 .categories li a, .archives li a {
-  color: #60ad5e;
+  color: #d1b330;
 }
 
 .address-info p {
-  color: #60ad5e;
+  color: #d1b330;
 }
 
 .terms-sec-head p {
-  color: #60ad5e;
+  color: #d1b330;
 }
 
 p.agree {
-  color: #60ad5e;
+  color: #d1b330;
   ;
 }
 
 /*==========================Color 3==========================*/
 
 .content-grid-info h3 a, .content-sec-info h3 a {
-  color: #5d875b;
+  color: #87845b;
 }
 
 .categories h3, .archives h3 {
-  color: #5d875b;
+  color: #87845b;
 }
 
 .contact-head h3, .terms h3 {
-  color: #5d875b;
+  color: #87845b;
 }
 
 .contact form input[type="text"], .contact-right textarea {
-  border: 1px solid #5d875b;
-  color: #5d875b;
+  border: 1px solid #87845b;
+  color: #87845b;
 }
 
 .contact form input[type="submit"] {
-  color: #5d875b;
-  border: 1px solid #5d875b;
+  color: #87845b;
+  border: 1px solid #87845b;
 }
 
 .contact form input[type="submit"]:hover {
-  background: #5d875b;
-  border: 1px solid #5d875b;
+  background: #87845b;
+  border: 1px solid #87845b;
 }
 
 .address-info h4 {
-  color: #5d875b;
+  color: #87845b;
 }
 
 .address-info h5 a {
-  color: #5d875b;
+  color: #87845b;
 }
 
 .term p {
-  color: #5d875b;
+  color: #87845b;
 }
 
 .term li {
-  color: #5d875b;
+  color: #87845b;
 }
 
 .terms input[type="button"] {
-  color: #5d875b;
-  border: 1px solid #5d875b;
+  color: #87845b;
+  border: 1px solid #87845b;
   background: #EFEAD8;
 }
 
 .terms input[type="button"]:hover {
-  background: #5d875b;
-  border: 1px solid #5d875b;
+  background: #87845b;
+  border: 1px solid #87845b;
 }
 
 .content-grid-single h3 {
-  color: #5d875b;
+  color: #87845b;
 }
 
 .content-form h3, .comments h3 {
-  color: #5d875b;
+  color: #87845b;
 }
 
 .comments img {
-  border: 1px solid #5d875b;
+  border: 1px solid #87845b;
 }
 
 .comment-info a {
-  color: #5d875b;
-  border: 1px solid #5d875b;
+  color: #87845b;
+  border: 1px solid #87845b;
 }
 
 /*==========================Color 4 (Accent)==========================*/
 
 .banner-links ul{
-  background:#cddc39;
+  background:#dd9b39;
 }
 
 .content-sec-info h4 a:hover{
-color:#cddc39;
+color:#dd9b39;
 }
 
 .fotter-info h3,.fotter-list h3,.fotter-media h3{
-color:#cddc39;
+color:#dd9b39;
 }
 
 .fotter-list ul li a:hover{
-color:#cddc39;
+color:#dd9b39;
 }
 
 .copywrite p a{
-color:#cddc39
+color:#dd9b39
 }

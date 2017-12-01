@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use DB;
 // use Laravel\Scout\Searchable;
 
 /**
@@ -36,7 +37,7 @@ class Post extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user_id', 'title', 'content', 'image'];
+    protected $fillable = ['user_id', 'title', 'content', 'image', 'view'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -68,5 +69,14 @@ class Post extends Model
     public function categories()
     {
         return $this->belongsToMany('App\Category', 'kategoripost', 'post_id', 'category_id');
+    }
+
+    public static function archieve()
+    {
+      return static::selectRaw('YEAR(created_at) year, MONTH(created_at) month, MONTHNAME(created_at) month_name, COUNT(*) post_count')
+      ->groupBy('year','month','month_name')
+      ->orderBy('year', 'desc')
+      ->orderBy('month', 'desc')
+      ->get();
     }
 }

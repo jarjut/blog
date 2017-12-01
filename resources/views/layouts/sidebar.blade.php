@@ -14,6 +14,12 @@
     @endforeach
   </div>
   <div class="categories">
+    <h3>MOST POPULAR</h3>
+    @foreach ($populars as $popular)
+      <li><a href="{{route('viewpost', ['post'=>$popular->post_id])}}">{{$popular->title}}</a></li>
+    @endforeach
+  </div>
+  <div class="categories">
     <h3>ANNOUNCEMENT</h3>
     @foreach ($announcement as $ann)
       <li><a href="{{route('viewpost', ['post'=>$ann->post_id])}}">{{$ann->title}}</a></li>

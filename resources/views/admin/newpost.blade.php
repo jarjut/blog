@@ -7,6 +7,15 @@
 @endsection
 
 @section('content')
+  @if ($errors->any())
+    <div class="callout callout-danger" role="callout">
+      <ul>
+      @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+      @endforeach
+      </ul>
+    </div>
+  @endif
     <div class="row">
       <form class="" action="{{route('newpost')}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
@@ -103,6 +112,7 @@
   <script type="text/javascript">
   $(function () {
     CKEDITOR.replace('content')
-  })
+  });
+  $('form').preventDoubleSubmission();
   </script>
 @endsection

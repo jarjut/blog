@@ -5,10 +5,14 @@
   <title>{{$title}}</title>
   <link href="{{asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
   <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css' />
+  <link href="{{asset('css/theme/color'.$color_theme.'.css')}}" rel='stylesheet' type='text/css' />
   <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel='stylesheet' type='text/css' />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   @yield('meta')
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:site_name" content="{{$title}}" />
+  @yield('ogmeta')
   {{-- <script type="application/x-javascript">
     addEventListener("load", function() {
       setTimeout(hideURLbar, 0);
@@ -37,7 +41,6 @@
     });
   </script>
   <!---->
-  <link href="{{asset('css/theme/color'.$color_theme.'.css')}}" rel='stylesheet' type='text/css' />
   @yield('css')
 </head>
 
@@ -47,14 +50,17 @@
     <div class="header">
       <div class="container">
         <div class="logo">
-          <a href="{{route('home')}}"> <img src="{{asset('images/logo.png')}}" title="{{$title}}" /></a>
+          <a href="{{route('home')}}">
+            {{-- <img src="{{asset('images/logo.png')}}" title="{{$title}}" /> --}}
+            <h1>{{$logo}}</h1>
+          </a>
         </div>
         <!---start-top-nav---->
         <div class="top-menu">
           <span class="menu"> </span>
           <ul>
-            <li><a href="{{route('home')}}">HOME</a></li>
-            <li><a href="{{route('home')}}">ANNOUNCEMENT</a></li>
+            <li class="{{url()->current()==route('home') ? 'active' : ''}}"><a href="{{route('home')}}">HOME</a></li>
+            <li class="{{url()->current()==route('blogannouncement') ? 'active' : ''}}"><a href="{{route('blogannouncement')}}">ANNOUNCEMENT</a></li>
             {{-- <li><a href="contact.html">CONTACT</a></li>
             <li><a href="terms.html">TERMS</a></li> --}}
             <div class="clearfix"> </div>
@@ -117,27 +123,19 @@
   <!---fotter/--> --}}
   <div class="copywrite">
     <div class="container">
-      <p>Copyrights &copy; 2015 Blogging All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></p>
+      <p>Copyrights &copy; 2017 All rights reserved | <a href="http://www.unair.ac.id/">UNAIR</a></p>
     </div>
   </div>
   <!---->
   <script type="text/javascript">
     $(document).ready(function() {
-      /*
-      var defaults = {
-      containerID: 'toTop', // fading element id
-      containerHoverID: 'toTopHover', // fading element hover id
-      scrollSpeed: 1200,
-      easingType: 'linear'
-      };
-      */
       $().UItoTop({
         easingType: 'easeOutQuart'
       });
     });
   </script>
   <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-
+  <script src="{{asset('js/main.js')}}"></script>
   @yield('js')
 </body>
 

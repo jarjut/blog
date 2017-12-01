@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
+use Validator;
 
 class PostController extends Controller
 {
@@ -117,7 +118,7 @@ class PostController extends Controller
     public function showCategoriesPage()
     {
       $data = array(
-        'categories'  => Category::withCount('posts')->get(),
+        'categories'  => Category::where('category_id','!=', 2)->withCount('posts')->get(),
       );
       return view('admin.categories')->with($data);
     }
@@ -139,7 +140,7 @@ class PostController extends Controller
         //Selecting post where post is announcement
         'posts'  => Post::with(['categories', 'user'])
         ->whereHas('categories', function($q){
-          $q->where('kategoripost.category_id','=','2');
+          $q->where('kategoripost.category_id','2');
           })
         ->latest()->get(),
       );
@@ -182,6 +183,6 @@ class PostController extends Controller
     {
       $postCount = Post::count();
 
-      return $postCount;
+      return response()->json($postCount);
     }
 }

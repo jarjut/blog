@@ -12,6 +12,15 @@
       {{session('status')}}
     </div>
   @endif
+  @if ($errors->any())
+    <div class="callout callout-danger" role="callout">
+      <ul>
+      @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+      @endforeach
+      </ul>
+    </div>
+  @endif
 
   <form class="" action="{{route('options')}}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
@@ -24,6 +33,10 @@
         <div class="form-group">
           <label for="">Title</label>
           <input type="text" name="title" class="form-control" value="{{$title}}" required>
+        </div>
+        <div class="form-group">
+          <label for="">Logo Text <span style="font-weight:100;">(Max 8 character)</span></label>
+          <input type="text" name="logo" class="form-control" value="{{$logo}}" maxlength="8" required>
         </div>
         <div class="form-group">
           <label for="">Description</label>
@@ -86,4 +99,7 @@
 
 @section('js')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.1.3/cropper.min.js"></script>
+  <script type="text/javascript">
+    $('form').preventDoubleSubmission();
+  </script>
 @endsection

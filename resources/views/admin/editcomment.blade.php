@@ -16,6 +16,7 @@
       <form class="" action="{{route('editcomment', ['id' => $comment->comment_id])}}" method="post">
         {{ csrf_field() }}
         <div class="col-md-9">
+        @empty ($comment->user_id)
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Author</h3>
@@ -35,6 +36,7 @@
               </div>
             </div>
           </div>
+        @endempty
 
           <div class="box box-primary">
             <div class="box-header with-border">

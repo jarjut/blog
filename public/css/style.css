@@ -29,12 +29,16 @@ ul,label{
 }
 /*----start-header----*/
 .header{
-background:rgba(255, 255, 255, 0.2);
-height:80px;
+background:rgba(255, 255, 255, 0.25);
+height:50px;
 }
 .logo{
 	float: left;
-	margin-top: 1.3em;
+	margin-top: 0.3em;
+}
+.logo a{
+  color: #ffffff;
+	text-decoration:none;
 }
 .top-menu{
 	float:right;
@@ -49,7 +53,7 @@ border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 .top-menu ul li a{
 	/*background:rgba(246, 197, 112, 0.34);*/
-	margin: 2em 2.5em;
+	margin: 1em 2.5em;
 	display: block;
 	color: #54332A;
 	font-weight:400;
@@ -111,7 +115,7 @@ background: #fff;
 padding:20px;
 }
 .content-grid-head{
-background:#F9F4E2;
+/*background:#F9F4E2;*/
 padding:0.8em 1em;
 }
 .content-grid-head h3{
@@ -133,7 +137,13 @@ text-decoration:none;
 .content-grid-head h4 a:hover{
 color:#C3AEA3;
 }
-.content-grid-info,.content-grid-single{
+.content-grid-single{
+/*background:url(../images/cntnt-bg.jpg) repeat 0px 0px;*/
+background-size:100% 100%;
+padding:1em 18px;
+}
+
+.content-grid-info{
 background:url(../images/cntnt-bg.jpg) repeat 0px 0px;
 background-size:100% 100%;
 padding:1em 18px;
@@ -152,7 +162,15 @@ font-family: 'Oswald', sans-serif;
 color:#EB5A41;
 }
 .content-grid-info p,.content-sec-info p{
-color:#BBA198;
+color:#a48f88;
+line-height:1.5em;
+width:80%;
+font-size:0.95em;
+font-family: 'Source Sans Pro', sans-serif;
+}
+
+.content-sec-info a{
+color:#7c85db;
 line-height:1.5em;
 width:80%;
 font-size:0.95em;
@@ -177,7 +195,7 @@ background:#FFC600;
 }
 .content-grid-sec{
 padding: 1em 18px 0 18px;
-margin-top:3em;
+margin-top:0.5em;
 }
 .content-sec-info h3{
 margin-bottom:8px;
@@ -188,7 +206,7 @@ font-weight:400;
 font-size:0.85em;
 text-decoration:none;
 font-family: 'Source Sans Pro', sans-serif;
-margin-bottom:1.3em;
+margin-bottom:0.5em;
 display:block;
 }
 .content-sec-info h4 a{
@@ -370,12 +388,12 @@ transition: 0.5s all;
 	-o-transition: 0.5s all;
 }
 .copywrite {
-background: #65443A;
+background: #4d4a49;
 text-align: left;
 padding: 1em 0;
 }
 .copywrite p {
-color: #8A685F;
+color: #908e8c;
 font-size: 1em;
 font-family: 'Source Sans Pro', sans-serif;
 }
@@ -601,7 +619,7 @@ display: block;
 font-family: 'Oswald', sans-serif;
 }
 .content-grid-single span{
-color: #BBA198;
+color: #a48f88;
 line-height: 1.5em;
 font-size: 0.95em;
 font-family: 'Source Sans Pro', sans-serif;
@@ -609,9 +627,9 @@ margin-bottom: 1em;
 display:block;
 }
 .content-grid-single p{
-color: #BBA198;
+/*color: #a48f88;*/
 line-height: 1.8em;
-font-size: 0.95em;
+/*font-size: 0.95em;*/
 font-family: 'Source Sans Pro', sans-serif;
 margin-top: 1em;
 }
@@ -630,9 +648,9 @@ padding: 10px 15px;
 width: 80%;
 color: #333;
 font-size: 1em;
-border: 1px solid #F6F1DE;
+border: 1px solid #bebbaf;
 font-family: 'Source Sans Pro', sans-serif;
-background: #F6F1DE;
+/*background: #F6F1DE;*/
 outline: none;
 display: block;
 margin:10px 0;
@@ -685,7 +703,7 @@ font-family: 'Source Sans Pro', sans-serif;
 margin-bottom:0.5em;
 }
 .comment-info p {
-color: #BBA198;
+color: #a48f88;
 line-height: 1.5em;
 font-size: 0.95em;
 font-family: 'Source Sans Pro', sans-serif;
@@ -701,28 +719,29 @@ font-family: 'Source Sans Pro', sans-serif;
 .comment-info a{
 color:#87655B;
 background:transparent;
-padding: 0.5em 1.5em;
+padding: 0.2em 0.4em;
 text-decoration: none;
-font-size: 0.85em;
+font-size: 0.9em;
+font-weight: 600;
 display: inline-block;
 font-family: 'Source Sans Pro', sans-serif;
 border: 1px solid #87655B;
 }
-.comment-info a:hover{
+/*.comment-info a:hover{
 color: #fff;
 background: #EB5A41;
 border: 1px solid #EB5A41;
-}
+}*/
 .comment-grid{
-margin-bottom:2.5em;
+margin-bottom:1.5em;
 }
 img.single-pic{
-width:100%;
+width:85%;
 }
 /*--responsive--*/
 @media (max-width: 1024px){
 .top-menu ul li a {
-margin:2em;
+margin:1em;
 }
 .banner-head h1 {
 font-size: 2.2em;
@@ -755,10 +774,10 @@ a.bttn {
 padding: 0.55em 0.9em;
 }
 .content-grid-sec {
-margin-top: 2em;
+margin-top: 0.5em;
 }
 .content-sec-info h4 {
-margin-bottom: 1em
+margin-bottom: 0.5em
 }
 .fotter-info p {
 width: 93%;
@@ -926,7 +945,7 @@ padding: 0.55em 1em;
 font-size: 0.9em;
 }
 .content-grid-sec {
-margin-top: 1.5em;
+margin-top: 1em;
 }
 .pages ul li a {
 font-size: 0.85em;
@@ -1000,8 +1019,7 @@ font-size: 0.9em;
 height: 48px;
 }
 .logo {
-width: 21%;
-margin-top: 0.8em;
+ display: none;
 }
 .top-menu ul li a {
 margin: 1.1em;
@@ -1242,7 +1260,7 @@ height: 130px;
 margin-top: 1em;
 }
 .content-sec-info h4 {
-margin-bottom: 0.65em;
+margin-bottom: 0.5em;
 font-size: 0.8em;
 }
 a.bttn {

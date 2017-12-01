@@ -1,5 +1,10 @@
 /*THEME COLOR BLUE*/
 
+#toTop {
+	background: url(../../images/to-top1.png) no-repeat 5px 10px #0d47a1;
+}
+
+
 /*Content Color*/
 .content-sec-info h4{
   color:#5e5bee;
@@ -45,6 +50,7 @@ a.bttn {
 
 a.bttn:hover {
   color: #0d47a1;
+	background:#00f7ff;
 }
 
 .search {
@@ -94,10 +100,10 @@ a.bttn:hover {
   color: #0d47a1;
 }
 
-.comment-info a:hover {
+/*.comment-info a:hover {
   background: #0d47a1;
   border: 1px solid #0d47a1;
-}
+}*/
 
 
 /*Color 2*/

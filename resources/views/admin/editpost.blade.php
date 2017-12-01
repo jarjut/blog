@@ -12,6 +12,15 @@
         {{session('status')}} | <a href="{{route('viewpost', ['post' => $post->post_id])}}">View Post</a>
       </div>
     @endif
+    @if ($errors->any())
+      <div class="callout callout-danger" role="callout">
+        <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+        </ul>
+      </div>
+    @endif
     <div class="row">
       <form class="" action="{{route('editpost', ['post' => $post->post_id])}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}

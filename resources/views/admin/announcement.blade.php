@@ -35,7 +35,7 @@
               <td>{{$post->title}}</td>
               <td>{{$post->description}}</td>
               <td>{{$post->user->username}}</td>
-              <td>{{$post->created_at}}</td>
+              <td>{{$post->created_at->diffForHumans()}}</td>
             </tr>
           @endforeach
         </tbody>
@@ -56,7 +56,7 @@
   <script>
     $(function () {
       $('#postsTable').DataTable({
-        "order": [[3, 'desc']],
+        "ordering": false,
         "columns": [
           { "width": "20%"},
           { "width": "50%"},
