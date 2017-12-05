@@ -60,6 +60,7 @@ Route::prefix('admin')->group(function () {
 
 
 
-// Route::prefix('get')->group(function(){
-//   Route::get('posts', 'PostController@getPosts');
-// });
+Route::prefix('get')->group(function(){
+  Route::get('posts', 'PostController@getPostsCount');
+  Route::get('comments', 'CommentController@getCommentsCount');
+});

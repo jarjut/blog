@@ -84,4 +84,11 @@ class CommentController extends Controller
       return redirect()->back();
 
     }
+
+    public function getCommentsCount()
+    {
+      $commentCount = Comment::count();
+
+      return response()->json($commentCount);
+    }
 }

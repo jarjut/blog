@@ -33,7 +33,7 @@ class OptionController extends Controller
       Option::setOptionValue('banner-sub-title', $req->banner_sub_title);
       if(isset($req->banner_image)){
         Validator::make($req->all(),[
-            'banner_image' => 'image'
+            'banner_image' => 'image|size:1000'
           ])->validate();
         $path = $req->file('banner_image')->storeAs('public', 'banner.jpg');
       }

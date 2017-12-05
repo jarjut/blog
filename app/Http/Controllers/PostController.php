@@ -53,6 +53,9 @@ class PostController extends Controller
       }
       $post->save();
       if (isset($req->image)) {
+        $req->validate([
+          'image' => 'image|size:1000'
+        ]);
         $post->image = 1;
         $path = $req->file('image')->storeAs('public/imagepost', $post->post_id.'.jpg');
         $post->save();
@@ -164,6 +167,9 @@ class PostController extends Controller
       $post->content = $req->content;
       $post->save();
       if (isset($req->image)) {
+        $req->validate([
+          'image' => 'image|size:1000'
+        ]);
         $post->image = 1;
         $path = $req->file('image')->storeAs('public/imagepost', $post->post_id.'.jpg');
         $post->save();
@@ -179,7 +185,7 @@ class PostController extends Controller
 
 
 
-    public function getPosts()
+    public function getPostsCount()
     {
       $postCount = Post::count();
 

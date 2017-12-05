@@ -123,7 +123,7 @@
   <!---fotter/--> --}}
   <div class="copywrite">
     <div class="container">
-      <p>Copyrights &copy; 2017 All rights reserved | <a href="http://www.unair.ac.id/">UNAIR</a></p>
+      <p>Copyrights &copy; 2017 All rights reserved</p>
     </div>
   </div>
   <!---->
