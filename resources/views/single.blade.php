@@ -11,7 +11,7 @@
       <h3>{{$post->title}}</h3>
       <div class="text-center">
         @if ($post->image!=0)
-          <img class="single-pic" src="{{asset('storage/imagepost/'.$post->post_id.'.jpg')}}" alt=""/>
+          <img class="single-pic" src="{{asset('upload/imagepost/'.$post->post_id.'.jpg')}}" alt=""/>
         @endif
       </div>
       {!!$post->content!!}
@@ -79,7 +79,7 @@
   <meta property="og:url"           content="{{url()->current()}}" />
   <meta property="og:type"          content="article" />
   @if ($post->image!=0)
-    <meta property="og:image"         content="{{asset('storage/imagepost/'.$post->post_id.'.jpg')}}" />
+    <meta property="og:image"         content="{{asset('upload/imagepost/'.$post->post_id.'.jpg')}}" />
   @endif
 @endsection
 

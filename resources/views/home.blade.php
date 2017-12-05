@@ -11,14 +11,14 @@
       <div class="content-grid-info">
       @if ($headline->image!=0)
         <div class="row">
-          <div class="col-sm-4" >
+          <div class="col-sm-5" >
             @if ($headline->image!=0)
               <a href="{{url('post/'.$headline->post_id)}}">
-                <img src="{{asset('storage/imagepost/'.$headline->post_id.'.jpg')}}" alt=""/>
+                <img src="{{asset('upload/imagepost/'.$headline->post_id.'.jpg')}}" alt=""/>
               </a>
             @endif
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-7">
             <h3><a href="{{url('post/'.$headline->post_id)}}">{{$headline->title}}</a></h3>
             <p>{{$headline->description}}</p>
 
@@ -42,7 +42,7 @@
           <a href="{{url('post/'.$post->post_id)}}">View More</a>
           {{-- @if ($post->image!=0)
               <a href="{{url('post/'.$post->post_id)}}">
-              <img src="{{asset('storage/imagepost/'.$post->post_id.'.jpg')}}" alt="" />
+              <img src="{{asset('upload/imagepost/'.$post->post_id.'.jpg')}}" alt="" />
             </a>
           @endif --}}
           {{-- <a class="bttn" href="{{url('post/'.$post->post_id)}}">READ MORE</a> --}}

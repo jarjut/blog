@@ -27,7 +27,7 @@
                   <h3 class="box-title">Title</h3>
                 </div>
                 <div class="box-body">
-                  <input type="text" name="title" class="form-control" required>
+                  <input type="text" name="title" class="form-control" value="{{old('title')}}" required>
                 </div>
               </div>
             </div>
@@ -51,7 +51,7 @@
               <h3 class="box-title">Description</h3>
             </div>
             <div class="box-body">
-              <input type="text" name="description" class="form-control" required>
+              <input type="text" name="description" class="form-control" value="{{old('description')}}" required>
             </div>
           </div>
           {{-- Content --}}
@@ -61,7 +61,7 @@
               <h3 class="box-title">Content</h3>
             </div>
             <div class="box-body">
-              <textarea id="content" name="content"></textarea>
+              <textarea id="content" name="content">{{old('content')}}</textarea>
             </div>
           </div>
           {{-- Content --}}
@@ -74,7 +74,7 @@
             <div class="box-body">
               <div class="form-check form-check-inline" style="margin-bottom:8px">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" name="headline" value="1"> Headline Post
+                  <input class="form-check-input" type="checkbox" name="headline" value="1" {{!empty(old('headline')) ? "checked" : ""}}> Headline Post
                 </label>
               </div>
               <button type="submit" class="btn btn-primary">Publish</button>

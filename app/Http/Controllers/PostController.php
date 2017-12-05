@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
 use Validator;
+use Image;
 
 class PostController extends Controller
 {
@@ -43,6 +44,11 @@ class PostController extends Controller
 
     public function addNewPost(Request $req)
     {
+
+      $req->validate([
+        'image' => 'image|max:1024'
+      ]);
+
       $post = new Post;
       $post->user_id = auth()->user()->user_id;
       $post->title = $req->title;
@@ -53,11 +59,11 @@ class PostController extends Controller
       }
       $post->save();
       if (isset($req->image)) {
-        $req->validate([
-          'image' => 'image|size:1000'
-        ]);
         $post->image = 1;
-        $path = $req->file('image')->storeAs('public/imagepost', $post->post_id.'.jpg');
+        $image = $req->image;
+        $imagepost = Image::make($image->getRealPath());
+        $imagepost->save(public_path('upload/imagepost/'.$post->post_id.'.jpg'));
+        // $path = $req->file('image')->storeAs('public/imagepost', $post->post_id.'.jpg');
         $post->save();
       }
 
@@ -95,8 +101,14 @@ class PostController extends Controller
       $post->description = $req->description;
       $post->content = $req->content;
       if (isset($req->image)) {
+        $req->validate([
+          'image' => 'image|max:1024'
+        ]);
         $post->image = 1;
-        $path = $req->file('image')->storeAs('public/imagepost', $post->post_id.'.jpg');
+        $image = $req->image;
+        $imagepost = Image::make($image->getRealPath());
+        $imagepost->save(public_path('upload/imagepost/'.$post->post_id.'.jpg'));
+        // $path = $req->file('image')->storeAs('public/imagepost', $post->post_id.'.jpg');
       }
       $post->save();
 
@@ -160,6 +172,10 @@ class PostController extends Controller
 
     public function addNewAnnouncement(Request $req)
     {
+      $req->validate([
+        'image' => 'image|max:1024'
+      ]);
+      
       $post = new Post;
       $post->user_id = auth()->user()->user_id;
       $post->title = $req->title;
@@ -167,11 +183,11 @@ class PostController extends Controller
       $post->content = $req->content;
       $post->save();
       if (isset($req->image)) {
-        $req->validate([
-          'image' => 'image|size:1000'
-        ]);
         $post->image = 1;
-        $path = $req->file('image')->storeAs('public/imagepost', $post->post_id.'.jpg');
+        $image = $req->image;
+        $imagepost = Image::make($image->getRealPath());
+        $imagepost->save(public_path('upload/imagepost/'.$post->post_id.'.jpg'));
+        // $path = $req->file('image')->storeAs('public/imagepost', $post->post_id.'.jpg');
         $post->save();
       }
 

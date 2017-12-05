@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Option;
 use DB;
 use Validator;
+use Image;
 
 class OptionController extends Controller
 {
@@ -33,9 +34,12 @@ class OptionController extends Controller
       Option::setOptionValue('banner-sub-title', $req->banner_sub_title);
       if(isset($req->banner_image)){
         Validator::make($req->all(),[
-            'banner_image' => 'image|size:1000'
+            'banner_image' => 'image|max:1024'
           ])->validate();
-        $path = $req->file('banner_image')->storeAs('public', 'banner.jpg');
+        $image = $req->banner_image;
+        $banner = Image::make($image->getRealPath())->widen(1024);
+        $banner->save(public_path('banner.jpg'));
+        // $path = $req->file('banner_image')->storeAs('public', 'banner.jpg');
       }
       Option::setOptionValue('color-theme', $req->colortheme);
 

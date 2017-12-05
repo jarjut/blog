@@ -23,7 +23,7 @@ ul,label{
 }
 /*----start-container---*/
 .banner{
-	background:url(../storage/banner.jpg) no-repeat 0px 0px;
+	background:url(../banner.jpg) no-repeat 0px 0px;
 	background-size: 100%;
 	min-height:340px;
 }
@@ -164,7 +164,8 @@ color:#EB5A41;
 .content-grid-info p,.content-sec-info p{
 color:#a48f88;
 line-height:1.5em;
-width:80%;
+width:90%;
+text-align: justify;
 font-size:0.95em;
 font-family: 'Source Sans Pro', sans-serif;
 }

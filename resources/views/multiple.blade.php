@@ -15,7 +15,7 @@
         <a href="{{url('post/'.$post->post_id)}}">View More</a>
         {{-- @if ($post->image!=0)
           <a href="{{url('post/'.$post->post_id)}}">
-            <img src="{{asset('storage/imagepost/'.$post->post_id.'.jpg')}}" alt="" />
+            <img src="{{asset('upload/imagepost/'.$post->post_id.'.jpg')}}" alt="" />
           </a>
         @endif --}}
         {{-- <a class="bttn" href="{{url('post/'.$post->post_id)}}">READ MORE</a> --}}
