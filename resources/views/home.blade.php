@@ -33,7 +33,24 @@
     </div>
   @endif
   @foreach ($posts as $post)
-    @if ($headline->post_id!=$post->post_id)
+    @if (isset($headline))
+      @if ($headline->post_id!=$post->post_id)
+        <div class="content-grid-sec">
+          <div class="content-sec-info">
+            <h3><a href="{{url('post/'.$post->post_id)}}">{{$post->title}}</a></h3>
+            <h4>{{$post->created_at->diffForHumans()}}, Posted by : <a href="#">{{$post->user->username}}</a></h4>
+            <p>{{$post->description}}</p>
+            <a href="{{url('post/'.$post->post_id)}}">View More</a>
+            {{-- @if ($post->image!=0)
+                <a href="{{url('post/'.$post->post_id)}}">
+                <img src="{{asset('upload/imagepost/'.$post->post_id.'.jpg')}}" alt="" />
+              </a>
+            @endif --}}
+            {{-- <a class="bttn" href="{{url('post/'.$post->post_id)}}">READ MORE</a> --}}
+          </div>
+        </div>
+      @endif
+    @else
       <div class="content-grid-sec">
         <div class="content-sec-info">
           <h3><a href="{{url('post/'.$post->post_id)}}">{{$post->title}}</a></h3>
@@ -49,6 +66,7 @@
         </div>
       </div>
     @endif
+
   @endforeach
 
   {{$posts->links('layouts.pagination')}}
