@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2017 at 05:16 PM
--- Server version: 10.1.26-MariaDB
+-- Generation Time: 15 Des 2017 pada 19.50
+-- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,28 +25,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Struktur dari tabel `category`
 --
 
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
+  `slug` varchar(200) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `category`
+-- Dumping data untuk tabel `category`
 --
 
-INSERT INTO `category` (`category_id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Uncategorized', NULL, NULL),
-(2, 'announcement', NULL, NULL);
+INSERT INTO `category` (`category_id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Uncategorized', 'uncategorized', NULL, NULL),
+(2, 'announcement', 'announcement', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `colors`
+-- Struktur dari tabel `colors`
 --
 
 CREATE TABLE `colors` (
@@ -55,7 +56,7 @@ CREATE TABLE `colors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `colors`
+-- Dumping data untuk tabel `colors`
 --
 
 INSERT INTO `colors` (`id`, `name`) VALUES
@@ -69,7 +70,7 @@ INSERT INTO `colors` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
+-- Struktur dari tabel `comments`
 --
 
 CREATE TABLE `comments` (
@@ -89,7 +90,7 @@ CREATE TABLE `comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategoripost`
+-- Struktur dari tabel `kategoripost`
 --
 
 CREATE TABLE `kategoripost` (
@@ -100,7 +101,7 @@ CREATE TABLE `kategoripost` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `options`
+-- Struktur dari tabel `options`
 --
 
 CREATE TABLE `options` (
@@ -110,7 +111,7 @@ CREATE TABLE `options` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `options`
+-- Dumping data untuk tabel `options`
 --
 
 INSERT INTO `options` (`option_id`, `option_name`, `option_value`) VALUES
@@ -119,18 +120,19 @@ INSERT INTO `options` (`option_id`, `option_name`, `option_value`) VALUES
 (3, 'banner-title', 'This is My Blog'),
 (4, 'banner-sub-title', NULL),
 (5, 'color-theme', '1'),
-(6, 'logo-text', 'BLOG');
+(6, 'logo-text', 'BLOGKU');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Struktur dari tabel `posts`
 --
 
 CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `title` text NOT NULL,
+  `slug` varchar(200) NOT NULL,
   `description` text NOT NULL,
   `content` longtext NOT NULL,
   `image` smallint(6) NOT NULL DEFAULT '0',
@@ -144,7 +146,7 @@ CREATE TABLE `posts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -157,11 +159,11 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$73JQaGaw.HRw/ixI6GmGB.xz5L6Ku.ZGWqZ36BpD6wYpU4Y1D2blu', 'z2CCLFHDQSXWmiucDK8BgmqSoXv1JuIKTUHhfwSnCUzZZrbFuvqK5N9TyMkl', '2017-11-19 09:20:11', '2017-11-23 08:31:57');
+(1, 'admin', '$2y$10$DhZJZ70KcTXkT0FUsUQkF.tQc5zBcD65fgVxDjVcyY.fJkRDBk0Wa', 'h2swWTUiSuuc6Ka7GOT8fljznSDaDawNxGWwnTvlMbTW3HvSbew887RPPtZq', '2017-11-19 09:20:11', '2017-12-16 01:45:32');
 
 --
 -- Indexes for dumped tables
@@ -249,11 +251,11 @@ ALTER TABLE `posts`
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `comments`
+-- Ketidakleluasaan untuk tabel `comments`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `FK_ngoment` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
@@ -261,14 +263,14 @@ ALTER TABLE `comments`
   ADD CONSTRAINT `FK_postcomment` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`);
 
 --
--- Constraints for table `kategoripost`
+-- Ketidakleluasaan untuk tabel `kategoripost`
 --
 ALTER TABLE `kategoripost`
   ADD CONSTRAINT `FK_kategoripost` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_kategoripost2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `posts`
+-- Ketidakleluasaan untuk tabel `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `FK_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);

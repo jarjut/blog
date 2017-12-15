@@ -52,6 +52,7 @@ class PostController extends Controller
       $post = new Post;
       $post->user_id = auth()->user()->user_id;
       $post->title = $req->title;
+      $post->slug = str_slug($req->title, '-');
       $post->description = $req->description;
       $post->content = $req->content;
       if (isset($req->headline)) {
@@ -98,6 +99,7 @@ class PostController extends Controller
     {
       $post = Post::where('post_id', $idpost)->first();
       $post->title = $req->title;
+      $post->slug = str_slug($req->title, '-');
       $post->description = $req->description;
       $post->content = $req->content;
       if (isset($req->image)) {
@@ -141,7 +143,8 @@ class PostController extends Controller
     public function addCategory(Request $req)
     {
       $category = Category::create([
-        'name'  => $req->name
+        'name'  => $req->name,
+        'slug'  => str_slug($req->name, '-')
       ]);
 
       return redirect()->back();
@@ -175,10 +178,11 @@ class PostController extends Controller
       $req->validate([
         'image' => 'image|max:1024'
       ]);
-      
+
       $post = new Post;
       $post->user_id = auth()->user()->user_id;
       $post->title = $req->title;
+      $post->slug = str_slug($req->title, '-');
       $post->description = $req->description;
       $post->content = $req->content;
       $post->save();

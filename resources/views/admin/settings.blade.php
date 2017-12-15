@@ -35,11 +35,11 @@
           <input type="text" name="title" class="form-control" value="{{$title}}" required>
         </div>
         <div class="form-group">
-          <label for="">Logo Text <span style="font-weight:100;">(Max 8 character)</span></label>
-          <input type="text" name="logo" class="form-control" value="{{$logo}}" maxlength="8" required>
+          <label for="">Logo Text <span style="font-weight:100;">(Max 15 character)</span></label>
+          <input type="text" name="logo" class="form-control" value="{{$logo}}" maxlength="15" required>
         </div>
         <div class="form-group">
-          <label for="">Description</label>
+          <label for="">Description <span style="font-weight:100;"> (Describe your blog content)</span></label>
           <input type="text" name="description" class="form-control" value="{{$description}}" required>
         </div>
       </div>
@@ -61,7 +61,7 @@
           <input type="text" name="banner_sub_title" class="form-control" value="{{$banner_sub_title}}">
         </div>
         <div class="form-group">
-          <label for="">Image</label>
+          <label for="">Image <span style="font-weight:100;"> (Max File Size: 1024 KB)</span></label>
           <input type="file" name="banner_image" class="form-control" id="cropper">
         </div>
       </div>

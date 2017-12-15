@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>{{$title}}</title>
+  <title>@yield('title', $title)</title>
   <link href="{{asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
   <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css' />
   <link href="{{asset('css/theme/color'.$color_theme.'.css')}}" rel='stylesheet' type='text/css' />
@@ -52,7 +52,7 @@
         <div class="logo">
           <a href="{{route('home')}}">
             {{-- <img src="{{asset('images/logo.png')}}" title="{{$title}}" /> --}}
-            <h1>{{$logo}}</h1>
+            <h1 style="font-size:30px;">{{$logo}}</h1>
           </a>
         </div>
         <!---start-top-nav---->

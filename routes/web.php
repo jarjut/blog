@@ -15,7 +15,7 @@ Route::get('/', 'BlogController@showHomePage')->name('home');
 Route::get('/post/{post}', 'BlogController@showPost')->name('viewpost');
 Route::post('comment', 'BlogController@addComment')->name('addComment');
 Route::post('search', 'BlogController@search')->name('search');
-Route::get('category/{id}' ,'BlogController@showCategoryPosts')->name('categoryposts');
+Route::get('category/{slug}' ,'BlogController@showCategoryPosts')->name('categoryposts');
 Route::get('announcement', 'BlogController@showAnnouncementPage')->name('blogannouncement');
 
 /*
@@ -64,3 +64,6 @@ Route::prefix('get')->group(function(){
   Route::get('posts', 'PostController@getPostsCount');
   Route::get('comments', 'CommentController@getCommentsCount');
 });
+
+
+Route::get('/{year}/{month}/{day}/{slug}', 'BlogController@showPostWithSlug')->name('viewpostslug');
