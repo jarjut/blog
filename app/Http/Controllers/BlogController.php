@@ -29,13 +29,33 @@ class BlogController extends Controller
     public function showPost($post)
     {
       $datapost = Post::where('post_id', $post)->with(['user', 'comments', 'categories'])->first();
-      $data = array(
-        'post' => $datapost,
-        'comments' => Comment::where('post_id', $post)->where('com_comment_id', null)->with('comments','user')->latest()->get(),
-      );
-      if (empty($data['post'])) {
+      if (empty($datapost)) {
         abort(404);
       }
+      return redirect()->route('viewpostslug', [
+        'year' => $datapost->created_at->format('Y'),
+        'month' => $datapost->created_at->format('m'),
+        'day' => $datapost->created_at->format('d'),
+        'slug' => $datapost->slug]);
+    }
+
+    public function showPostWithSlug($year, $month, $day, $slug)
+    {
+      $date = $year.'-'.$month.'-'.$day;
+      $datapost = Post::whereDate('created_at', $date)
+          ->where('slug', $slug)
+          ->with(['user', 'categories'])->first();
+
+      if (empty($datapost)) {
+        abort(404);
+      }
+
+      $data = array(
+        'post' => $datapost,
+        'comments' => Comment::where('post_id', $datapost->post_id)->where('com_comment_id', null)->with('comments','user')->latest()->get(),
+        'title' => $datapost->title
+      );
+
       //Increment View Post
       $datapost->timestamps = false;
       $datapost->increment('view');
@@ -76,6 +96,7 @@ class BlogController extends Controller
       $posts = Post::where('title','LIKE', '%'.$req->search.'%')
       ->orWhere('content','LIKE', '%'.$req->search.'%')
       ->orWhere('description','LIKE', '%'.$req->search.'%')
+      ->orWhere('keywords','LIKE', '%'.$req->search.'%')
       ->with(['user', 'comments', 'categories'])
       ->latest()
       ->paginate(5);
@@ -87,9 +108,9 @@ class BlogController extends Controller
       return view('multiple')->with($data);
     }
 
-    public function showCategoryPosts($id)
+    public function showCategoryPosts($slug)
     {
-      $category = Category::where('category_id', $id)->first();
+      $category = Category::where('slug', $slug)->first();
 
       if (empty($category)) {
         abort(404);

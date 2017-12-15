@@ -24,7 +24,7 @@
         <thead>
           <tr>
             <th>Title</th>
-            <th>Author</th>
+            <th>Description</th>
             <th>Categories</th>
             <th>Date</th>
           </tr>
@@ -33,7 +33,14 @@
           @foreach ($posts as $post)
             <tr class="clickable-row" postId="{{$post->post_id}}" style="cursor: pointer;">
               <td>{{$post->title}}</td>
-              <td>{{$post->user->username}}</td>
+              <td>{{$post->description}}
+                <div class="action_menu" style="display:none;">
+                  <p>
+                    <a href="{{route('editpost',['post'=>$post->post_id])}}">Edit</a> |
+                    <a href="{{route('editpost',['post'=>$post->post_id])}}" class="delete" style="color:red;">Delete</a>
+                  </p>
+                </div>
+              </td>
               <td>@foreach ($post->categories as $category)
                     {{$category->name}},
                   @endforeach
@@ -53,17 +60,56 @@
       </table>
     </div>
   </div>
+  <form id="deleteForm" action="" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    {{ csrf_field() }}
+  </form>
 @stop
 
 @section('js')
+<script src="https://unpkg.com/sweetalert2@7.1.0/dist/sweetalert2.all.js"></script>
+
+  <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(document).on('click', '.delete', function(event){
+        event.preventDefault();
+        var deleteForm = $('#deleteForm');
+        deleteForm.attr('action', $(this).attr('href'));
+        swal({
+          title: 'Are you sure?',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.value) {
+            deleteForm.submit();
+          }
+        })
+        return false;
+      })
+
+      $('.clickable-row').mouseenter(function(){
+        $(this).find('div').show();
+      })
+      $('.clickable-row').mouseleave(function(){
+        $(this).find('div').hide();
+      })
+
+    })
+  </script>
+
   <script>
     $(function () {
       $('#postsTable').DataTable({
         "ordering": false,
         "columns": [
-          { "width": "20%"},
-          { "width": "50%"},
           { "width": "15%"},
+          { "width": "50%"},
+          { "width": "20%"},
           { "width": "15%"}
         ]
       })
