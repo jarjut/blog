@@ -46,7 +46,7 @@
         @foreach ($comments as $comment)
           <div class="comment-grid">
             <div class="comment-info" id="c{{$comment->comment_id}}" name="c{{$comment->comment_id}}">
-              <h4>{!!isset($comment->user_id) ? $comment->user->username.' <i class="fa fa-user" aria-hidden="true"></i>' : $comment->author_name!!}</h4>
+              <a href="{{isset($comment->author_url) ? 'http://'.$comment->author_url : '#'}}" style="border:none; padding:0; font-size:1em;"><h4>{!!isset($comment->user_id) ? $comment->user->username.' <i class="fa fa-user" aria-hidden="true"></i>' : $comment->author_name!!}</h4></a>
               <p>{{$comment->content}}</p>
               <h5>{{$comment->created_at->diffForHumans()}}</h5>
               <a href="#commentform" class="replyBtn" commentId="{{$comment->comment_id}}">Reply</a>
@@ -56,7 +56,7 @@
             @foreach ($comment->comments as $commentreply)
               <div class="comment-grid" style="margin-left:2em;">
                 <div class="comment-info" id="c{{$commentreply->comment_id}}" name="c{{$commentreply->comment_id}}">
-                  <h4>{!!isset($commentreply->user_id) ? $commentreply->user->username.' <i class="fa fa-user" aria-hidden="true"></i>' : $commentreply->author_name!!}</h4>
+                  <a href="{{isset($commentreply->author_url) ? 'http://'.$commentreply->author_url : '#'}}" style="border:none; padding:0; font-size:1em;"><h4>{!!isset($commentreply->user_id) ? $commentreply->user->username.' <i class="fa fa-user" aria-hidden="true"></i>' : $commentreply->author_name!!}</h4></a>
                   <p>{{$commentreply->content}}</p>
                   <h5>{{$commentreply->created_at->diffForHumans()}}</h5>
                 </div>
