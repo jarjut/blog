@@ -34,7 +34,7 @@
         </div>
       @else
         <h3><a href="{{$headlinelink}}">{{$headline->title}}</a></h3>
-        <p>{{$headline->description}}</p>
+        <p>{{str_limit(strip_tags($headline->content), 300)}}</p>
       @endif
         <a class="bttn" href="{{$headlinelink}}">READ MORE</a>
       </div>

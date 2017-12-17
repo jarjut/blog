@@ -20,7 +20,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts.sidebar', function($view){
           //Category without announcement
           $data = array(
-            'categories' => \App\Category::whereNotIn('category_id', [2])->get(),
+            'categories' => \App\Category::whereNotIn('category_id', [2])
+                  ->whereHas('posts')
+                  ->withCount('posts')
+                  ->orderBy('posts_count', 'desc')
+                  ->get(),
             'announcement' => \App\Post::whereHas('categories', function($q){
               $q->where('kategoripost.category_id','=','2');
               })

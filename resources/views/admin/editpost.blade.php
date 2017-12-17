@@ -55,6 +55,7 @@
               <h3 class="box-title">Description</h3>
             </div>
             <div class="box-body">
+              <p><span style="font-weight:100; font-size:12px;">Should be more than 25 words</span></p>
               <input type="text" name="description" class="form-control" value="{{$post->description}}" required>
             </div>
           </div>
@@ -80,6 +81,9 @@
               <a href="{{route('viewpost',['post'=>$post->post_id])}}">View Post</a>
               <br>
               <br>
+              @if ($announcement)
+                <input type="hidden" name="announcement" value="{{$announcement}}">
+              @endif
               <button type="submit" class="btn btn-primary">Update</button>
             </form>
             <form class="" action="{{route('editpost', ['post' => $post->post_id])}}" method="post" style="margin-top:8px;">
@@ -90,22 +94,34 @@
             </div>
           </div>
           {{-- Categories --}}
-          {{-- <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Categories</h3>
+          @if (!$announcement)
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h3 class="box-title">Categories</h3>
+              </div>
+              <div class="box-body">
+                @php
+                  function checkCategory($postcategories, $id){
+                    foreach ($postcategories as $postcategory) {
+                      if ($postcategory->category_id == $id) {
+                        return true;
+                      }
+                    }
+                    return false;
+                  }
+                @endphp
+                @foreach ($categories as $category)
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" name="categories[]" value="{{$category->category_id}}" {{checkCategory($post->categories, $category->category_id) ? 'checked' : ''}}>
+                      {{$category->name}}
+                    </label>
+                  </div>
+                @endforeach
+                <a href="{{route('categories')}}">Add New Category</a>
+              </div>
             </div>
-            <div class="box-body">
-              @foreach ($categories as $index => $category)
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="categories[]" value="{{$category->category_id}}">
-                    {{$category->name}}
-                  </label>
-                </div>
-              @endforeach
-              <a href="{{route('categories')}}">Add New Category</a>
-            </div>
-          </div> --}}
+          @endif
           {{-- Categories --}}
         </div>
     </div>
