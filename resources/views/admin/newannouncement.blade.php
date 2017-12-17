@@ -51,6 +51,7 @@
               <h3 class="box-title">Description</h3>
             </div>
             <div class="box-body">
+              <p><span style="font-weight:100; font-size:12px;">Should be more than 25 words</span></p>
               <input type="text" name="description" class="form-control" value="{{old('description')}}" required>
             </div>
           </div>

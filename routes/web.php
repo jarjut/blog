@@ -41,6 +41,8 @@ Route::prefix('admin')->group(function () {
     });
     Route::get('categories', 'PostController@showCategoriesPage')->name('categories');
     Route::post('categories', 'PostController@addCategory');
+    Route::post('editcategory', 'PostController@editCategory')->name('editcategory');
+    Route::delete('editcategory', 'PostController@deleteCategory');
     Route::get('comments', 'CommentController@showCommentsPage')->name('comments');
     Route::post('comments/reply', 'CommentController@replyCommentAdmin')->name('replycommentadmin');
     Route::get('comments/edit/{id}', 'CommentController@editCommentPage')->name('editcomment');

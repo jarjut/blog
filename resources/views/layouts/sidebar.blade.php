@@ -8,12 +8,6 @@
     </form>
   </div>
   <div class="categories">
-    <h3>CATEGORIES</h3>
-    @foreach ($categories as $category)
-      <li><a href="{{route('categoryposts', ['slug'=>$category->slug])}}">{{$category->name}}</a></li>
-    @endforeach
-  </div>
-  <div class="categories">
     <h3>MOST POPULAR</h3>
     @foreach ($populars as $popular)
       <li><a href="{{route('viewpostslug', [
@@ -21,6 +15,12 @@
         'month' => $popular->created_at->format('m'),
         'day' => $popular->created_at->format('d'),
         'slug' => $popular->slug])}}">{{$popular->title}}</a></li>
+    @endforeach
+  </div>
+  <div class="categories">
+    <h3>CATEGORIES</h3>
+    @foreach ($categories as $category)
+      <li><a href="{{route('categoryposts', ['slug'=>$category->slug])}}">{{$category->name}}</a></li>
     @endforeach
   </div>
   <div class="categories">

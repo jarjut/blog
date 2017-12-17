@@ -39,7 +39,7 @@
           <input type="text" name="logo" class="form-control" value="{{$logo}}" maxlength="15" required>
         </div>
         <div class="form-group">
-          <label for="">Description <span style="font-weight:100;"> (Describe your blog content)</span></label>
+          <label for="">Description <span style="font-weight:100;"> (Describe your blog content)</span><span style="font-weight:100; font-size:12px;"> should be more than 25 words</span></label>
           <input type="text" name="description" class="form-control" value="{{$description}}" required>
         </div>
       </div>

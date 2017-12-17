@@ -37,14 +37,13 @@ class PostController extends Controller
     public function showNewPostPage(){
       $data = array(
         //Category without announcement and Uncategorized
-        'categories'  => Category::whereNotIn('category_id', [1, 2])->get(),
+        'categories'  => Category::whereNotIn('category_id', [1, 2])->orderBy('name','asc')->get(),
       );
       return view('admin.newpost')->with($data);
     }
 
     public function addNewPost(Request $req)
     {
-
       $req->validate([
         'image' => 'image|max:1024'
       ]);
@@ -70,11 +69,9 @@ class PostController extends Controller
 
       //Attach Category
       if (isset($req->categories)) {
-        foreach ($req->categories as $category) {
-          $post->categories()->attach($category);
-        }
-      //If category is null set to Uncategorized
+        $post->categories()->attach($req->categories);
       }else{
+        //If category is null set to Uncategorized
         $post->categories()->attach(1);
       }
 
@@ -87,9 +84,19 @@ class PostController extends Controller
     */
     public function showEditPostPage($idpost, Request $req)
     {
+      $post = Post::where('post_id', $idpost)->with('categories')->first();
+      $category = $post->categories->first();
+      $announcement = false;
+      if ($category) {
+        if ($category->category_id == 2) {
+          $announcement = true;
+        }
+      }
       $data = array(
-        'categories'  => Category::all(),
-        'post'        => Post::where('post_id', $idpost)->with('categories')->first(),
+        //Category without announcement and Uncategorized
+        'categories'  => Category::whereNotIn('category_id', [1, 2])->orderBy('name','asc')->get(),
+        'post'        => $post,
+        'announcement' => $announcement,
       );
 
       return view('admin.editpost')->with($data);
@@ -114,6 +121,18 @@ class PostController extends Controller
       }
       $post->save();
 
+      //Check if not announcement
+      if (empty($req->announcement)) {
+        //Attach Category
+        if (isset($req->categories)) {
+          $post->categories()->sync($req->categories);
+        }else{
+          //If category is null set to Uncategorized
+          $post->categories()->detach();
+          $post->categories()->attach(1);
+        }
+      }
+
       return redirect()->back()->with('status', 'Post Updated');
     }
 
@@ -135,20 +154,47 @@ class PostController extends Controller
     public function showCategoriesPage()
     {
       $data = array(
-        'categories'  => Category::where('category_id','!=', 2)->withCount('posts')->get(),
+        'categories'  => Category::where('category_id','!=', 2)->withCount('posts')->orderBy('posts_count','desc')->get(),
       );
       return view('admin.categories')->with($data);
     }
 
     public function addCategory(Request $req)
     {
-      $category = Category::create([
-        'name'  => $req->name,
-        'slug'  => str_slug($req->name, '-')
-      ]);
+      $category = new Category;
+      $category->name = $req->name;
+      $category->slug = str_slug($req->name, '-');
+      $category->save();
 
       return redirect()->back();
     }
+
+    public function editCategory(Request $req)
+    {
+      // if not Uncategorized or announcement
+      if ($req->id!=1||$req->id!=2) {
+        $category = Category::find($req->id);
+        $category->name = $req->name;
+        $category->slug = str_slug($req->name, '-');
+        $category->save();
+      }
+
+      return redirect()->back()->with('status', 'Category Updated');
+    }
+
+    public function deleteCategory(Request $req)
+    {
+      // if not Uncategorized or announcement
+      if ($req->id!=1||$req->id!=2) {
+        $category = Category::find($req->id);
+        $category->posts()->detach();
+        $category->delete();
+      }
+
+
+      return redirect()->back()->with('status', 'Category Deleted');
+    }
+
 
     /*
     * Announcement
